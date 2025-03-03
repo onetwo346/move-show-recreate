@@ -1,11 +1,11 @@
-/* Basic Reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body & Basic Styles */
+/* Body and Layout */
 body {
     font-family: Arial, sans-serif;
     background-color: #1a1a1a;
@@ -15,6 +15,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 h1 {
@@ -41,6 +42,7 @@ h1 {
     animation: pulse-animation 1.5s infinite;
 }
 
+/* Pulse Animation for the Button */
 @keyframes pulse-animation {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
@@ -54,6 +56,8 @@ h1 {
 
 #main-page {
     text-align: center;
+    padding: 20px;
+    animation: fadeIn 1s ease-out;
 }
 
 #donation-section {
@@ -67,6 +71,7 @@ h1 {
     border-radius: 8px;
     color: #fff;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 #donation-image {
@@ -75,7 +80,7 @@ h1 {
     margin-top: 10px;
 }
 
-/* Chatbot */
+/* Chatbot Modal */
 #chatbot-modal {
     position: fixed;
     top: 0;
@@ -86,6 +91,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
 #chatbot {
@@ -119,4 +125,20 @@ h1 {
     color: #fff;
     cursor: pointer;
     margin-top: 10px;
+}
+
+/* Smooth Transition for Pages */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Ensure Responsiveness */
+@media screen and (max-width: 768px) {
+    #donation-image {
+        max-width: 80%;
+    }
+    #chatbot {
+        width: 90%;
+    }
 }
