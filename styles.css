@@ -1,144 +1,167 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body and Layout */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #1a1a1a;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    font-family: 'Arial', sans-serif;
     overflow: hidden;
+    background: #0a0a23;
+    color: #fff;
 }
 
-h1 {
-    font-size: 3rem;
-    text-align: center;
-}
+.hidden { display: none; }
 
 /* Intro Page */
-#intro-page {
+.intro {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    background: radial-gradient(circle, #1e1e5f, #0a0a23);
+    animation: cosmicGlow 10s infinite;
 }
 
-.pulse {
-    padding: 20px 40px;
-    font-size: 1.5rem;
-    background-color: #f39c12;
-    border: none;
-    border-radius: 8px;
+.pulsate {
+    font-size: 3rem;
     color: #fff;
+    text-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+    animation: pulse 2s infinite;
     cursor: pointer;
-    animation: pulse-animation 1.5s infinite;
 }
 
-/* Pulse Animation for the Button */
-@keyframes pulse-animation {
+@keyframes cosmicGlow {
+    0% { background: radial-gradient(circle, #1e1e5f, #0a0a23); }
+    50% { background: radial-gradient(circle, #2a2a8a, #0a0a23); }
+    100% { background: radial-gradient(circle, #1e1e5f, #0a0a23); }
+}
+
+@keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
 
 /* Main Page */
-.hidden {
-    display: none;
+.main {
+    height: 100vh;
+    position: relative;
 }
 
-#main-page {
-    text-align: center;
-    padding: 20px;
-    animation: fadeIn 1s ease-out;
-}
-
-#donation-section {
-    margin-top: 20px;
-}
-
-#donate-btn {
-    padding: 15px 30px;
-    background-color: #27ae60;
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-#donation-image {
-    width: 100%;
-    max-width: 300px;
-    margin-top: 10px;
-}
-
-/* Chatbot Modal */
-#chatbot-modal {
-    position: fixed;
+.cosmic-bg {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    background: url('stars.png') repeat; /* Replace with a cosmic texture */
+    opacity: 0.8;
+    animation: drift 20s linear infinite;
 }
 
-#chatbot {
-    background: #fff;
-    color: #333;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
+@keyframes drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 1000px; }
+}
+
+/* Chatbot */
+.chatbot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
 }
 
-#chatbot-messages {
-    margin-bottom: 15px;
-    height: 200px;
-    overflow-y: scroll;
-}
-
-#user-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-#send-btn, #close-chat-btn {
-    padding: 10px 20px;
-    background-color: #f39c12;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
+.chatbot-orb {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #ff00ff, #00ffff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
     cursor: pointer;
-    margin-top: 10px;
+    animation: orbPulse 3s infinite;
 }
 
-/* Smooth Transition for Pages */
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+.chatbot-box {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 300px;
+    position: relative;
 }
 
-/* Ensure Responsiveness */
-@media screen and (max-width: 768px) {
-    #donation-image {
-        max-width: 80%;
-    }
-    #chatbot {
-        width: 90%;
-    }
+#chatbot-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: #ff00ff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@keyframes orbPulse {
+    0% { box-shadow: 0 0 20px #ff00ff; }
+    50% { box-shadow: 0 0 40px #00ffff; }
+    100% { box-shadow: 0 0 20px #ff00ff; }
+}
+
+/* Feature Panel */
+.feature-panel {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+
+#search-generate {
+    background: #ff00ff;
+    border: 2px solid #00ffff;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#search-generate:hover {
+    transform: scale(1.1);
+}
+
+/* Donation */
+.donation {
+    position: absolute;
+    bottom: 20%;
+    right: 20%;
+    text-align: center;
+}
+
+.donation-pic {
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid #00ffff;
+}
+
+.donation a {
+    color: #ff00ff;
+    text-decoration: none;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+footer a { color: #ff00ff; }
+
+@media (max-width: 768px) {
+    .pulsate { font-size: 2rem; }
+    .chatbot-orb { width: 80px; height: 80px; }
+    .feature-panel, .donation { top: auto; bottom: 30%; left: 10%; right: 10%; }
 }
