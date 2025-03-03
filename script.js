@@ -1,20 +1,30 @@
-// Intro to Main Transition
+// Entry to Main Transition
 document.querySelector('.pulsate').addEventListener('click', () => {
-    const intro = document.getElementById('intro');
+    const entry = document.getElementById('entry');
     const main = document.getElementById('main');
-    intro.style.opacity = '0';
+    entry.style.transition = 'opacity 0.5s';
+    entry.style.opacity = '0';
     setTimeout(() => {
-        intro.classList.add('hidden');
+        entry.classList.add('hidden');
         main.classList.remove('hidden');
         main.style.opacity = '1';
-    }, 500); // Smooth fade
+    }, 500);
 });
 
-// Chatbot Toggle
+// Chatbot Logic
 const chatbotOrb = document.querySelector('.chatbot-orb');
 const chatbotBox = document.getElementById('chatbot-box');
-const chatbotClose = document.getElementById('chatbot-close');
 const chatbotText = document.getElementById('chatbot-text');
+const chatbotClose = document.getElementById('chatbot-close');
+const summaryInput = document.getElementById('summary-input');
+const generateBtn = document.getElementById('generate-btn');
+const searchBtn = document.getElementById('search-btn');
+const output = document.getElementById('output');
+const scriptOutput = document.getElementById('script-output');
+const characterOutput = document.getElementById('character-output');
+const animationOutput = document.getElementById('animation-output');
+const soundOutput = document.getElementById('sound-output');
+const exportBtn = document.getElementById('export-btn');
 
 chatbotOrb.addEventListener('click', () => {
     chatbotBox.classList.toggle('hidden');
@@ -24,15 +34,44 @@ chatbotClose.addEventListener('click', () => {
     chatbotBox.classList.add('hidden');
 });
 
-// Search or Generate Logic (Simulated)
-document.getElementById('search-generate').addEventListener('click', () => {
-    chatbotBox.classList.remove('hidden');
-    const userInput = prompt('Search (e.g., "sci-fi") or Generate (type a summary):');
-    if (userInput) {
-        if (userInput.toLowerCase().includes('search')) {
-            chatbotText.textContent = `Searching... Here’s a sci-fi short: "The Last Orbit" (pretend I found it!). Want to play it?`;
-        } else {
-            chatbotText.textContent = `Generating from: "${userInput}". Script: "INT. SPACESHIP - NIGHT. A lone astronaut stares at a dying star." Want visuals next?`;
-        }
+// Simulated Generation (Client-Side)
+generateBtn.addEventListener('click', () => {
+    const summary = summaryInput.value.trim();
+    if (!summary) {
+        chatbotText.textContent = 'Please enter a summary first!';
+        return;
     }
+
+    chatbotText.textContent = `Generating from: "${summary}"...`;
+    output.classList.remove('hidden');
+
+    // Fake Script Generation
+    scriptOutput.innerHTML = `<p><strong>Script:</strong> INT. DARK ROOM - NIGHT. A figure whispers, "${summary.split('.')[0]}."</p>`;
+
+    // Fake Character Design
+    characterOutput.innerHTML = `<p><strong>Characters:</strong> Hero - Tall, mysterious, glowing eyes.</p>`;
+
+    // Fake Animation
+    animationOutput.innerHTML = `<p><strong>Animation:</strong> 2D scene - Hero walks through neon-lit streets.</p>`;
+
+    // Fake Sound
+    soundOutput.innerHTML = `<p><strong>Sound:</strong> Eerie synth music, footsteps echo.</p>`;
+});
+
+// Simulated Search
+searchBtn.addEventListener('click', () => {
+    const summary = summaryInput.value.trim();
+    chatbotText.textContent = summary
+        ? `Searching for "${summary}"... Found: "Cosmic Escape" (pretend movie).`
+        : 'Searching... Here’s a default: "Starbound Journey."';
+    output.classList.remove('hidden');
+    scriptOutput.innerHTML = `<p><strong>Script:</strong> EXT. SPACE - DAY. A ship drifts silently.</p>`;
+    characterOutput.innerHTML = `<p><strong>Characters:</strong> Pilot - Brave, scarred.</p>`;
+    animationOutput.innerHTML = `<p><strong>Animation:</strong> 3D ship zooms past stars.</p>`;
+    soundOutput.innerHTML = `<p><strong>Sound:</strong> Engine hum, distant explosions.</p>`;
+});
+
+// Export (Simulated)
+exportBtn.addEventListener('click', () => {
+    chatbotText.textContent = 'Exporting your movie! (Pretend MP4 downloaded.) Fuel our adventure?';
 });
