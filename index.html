@@ -4,40 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Move Show Recreate</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Intro Page -->
-    <div id="intro-page">
-        <button id="start-btn" class="pulse">Tap to Start</button>
+    <div id="intro" class="intro">
+        <div class="pulsate">Tap to Begin</div>
     </div>
 
     <!-- Main Page -->
-    <div id="main-page" class="hidden">
-        <div id="header">
-            <h1>Move Show Recreate</h1>
-            <p>Designed by Kofi Fosu</p>
-            <p>Contact: <a href="mailto:cosmoscoderr@gmail.com">cosmoscoderr@gmail.com</a></p>
-        </div>
-        <div id="donation-section">
-            <button id="donate-btn">Tap or Scan to Fuel the Adventure</button>
-            <img src="donation-image.jpg" alt="Donation Image" id="donation-image">
-        </div>
-        <div id="chatbot-section">
-            <button id="chat-btn">Chat with the AI</button>
-        </div>
-    </div>
-
-    <!-- Chatbot Modal -->
-    <div id="chatbot-modal" class="hidden">
-        <div id="chatbot">
-            <div id="chatbot-messages">
-                <p>Hi, I'm the AI that powers Move Show Recreate. How can I help you today?</p>
+    <div id="main" class="main hidden">
+        <div class="cosmic-bg"></div>
+        <div id="chatbot" class="chatbot">
+            <div class="chatbot-orb">Tap to Chat</div>
+            <div id="chatbot-box" class="chatbot-box hidden">
+                <p id="chatbot-text">Hey, I’m the Move Show Recreate brain! Ask me anything or tap ‘Search or Generate’ to start.</p>
+                <button id="chatbot-close">X</button>
             </div>
-            <input type="text" id="user-input" placeholder="Ask me anything...">
-            <button id="send-btn">Send</button>
-            <button id="close-chat-btn">Close</button>
         </div>
+        <div class="feature-panel">
+            <button id="search-generate">Search or Generate</button>
+        </div>
+        <div class="donation">
+            <img src="kofi-pic.jpg" alt="Kofi Fosu" class="donation-pic">
+            <p>Tap or Scan to Fuel Our Adventure</p>
+            <a href="https://ko-fi.com/cosmoscoderr" target="_blank">Donate</a>
+        </div>
+        <footer>
+            Designed by Kofi Fosu | <a href="mailto:cosmoscoderr@gmail.com">cosmoscoderr@gmail.com</a>
+        </footer>
     </div>
 
     <script src="script.js"></script>
