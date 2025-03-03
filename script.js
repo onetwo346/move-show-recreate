@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Display bot response (mock response for now)
             const botMessage = document.createElement('p');
-            botMessage.textContent = `Ase: I am here to help you! Ask me anything about Move Show Recreate.`;
+            botMessage.textContent = `AI: I'm here to help you with Move Show Recreate! Ask me anything.`;
             chatbotMessages.appendChild(botMessage);
 
             // Clear the input field
